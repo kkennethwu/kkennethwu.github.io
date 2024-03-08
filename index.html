@@ -22,7 +22,7 @@
                 <p class="name" style="text-align: center;">
                   Chung-Ho (Kenneth) Wu, 吳中赫
                 </p>
-                <p>I am currently pursuing my Master's degree at <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a> (It was called National Chiao Tung University before), majoring Multimedia Engineering in <a href="https://www.ccs.nycu.edu.tw/">College of Computer Science</a>, and advised by <a href="https://yulunalexliu.github.io/">Prof. Yu-Lun, Liu</a> at CompPhoto Lab. I earned my bachelor's degree in <a href="https://www.cs.nycu.edu.tw/">Computer Science </a> in National Yang Ming Chiao Tung University in 2023.
+                <p>I am currently pursuing my Master's degree at <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a> (It was called National Chiao Tung University before), majoring Multimedia Engineering in <a href="https://www.ccs.nycu.edu.tw/">College of Computer Science</a>, and advised by <a href="https://yulunalexliu.github.io/">Prof. Yu-Lun, Liu</a> at CompPhoto Lab, specializing in 3D computer vision. I earned my bachelor's degree in <a href="https://www.cs.nycu.edu.tw/">Computer Science </a> in National Yang Ming Chiao Tung University in 2023.
                 </p>
                 <p>
                   <!-- At Google I've worked on <a href="https://www.google.com/glass/start/">Glass</a>,  <a href="https://ai.googleblog.com/2014/04/lens-blur-in-new-google-camera-app.html">Lens Blur</a>, <a href="https://ai.googleblog.com/2014/10/hdr-low-light-and-high-dynamic-range.html">HDR+</a>, <a href="https://blog.google/products/google-ar-vr/introducing-next-generation-jump/">VR</a>, <a href="https://ai.googleblog.com/2017/10/portrait-mode-on-pixel-2-and-pixel-2-xl.html">Portrait Mode</a>, <a href="https://ai.googleblog.com/2020/12/portrait-light-enhancing-portrait.html">Portrait Light</a>, and <a href="https://blog.google/products/maps/three-maps-updates-io-2022/">Maps</a>. I did my PhD at <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>, where I was advised by <a href="http://www.cs.berkeley.edu/~malik/">Jitendra Malik</a>. I've received the <a href="https://www.thecvf.com/?page_id=413#YRA">PAMI Young Researcher Award</a>. -->
@@ -63,10 +63,10 @@
 <tr onmouseout="frugal_stop()" onmouseover="frugal_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
-      <div class="two" id='frugal_image'><video  width=100% height=100% muted autoplay loop>
-      <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+      <!-- <div class="two" id='frugal_image'><video  width=100% height=100% muted autoplay loop>
+      <source src="images/camp.mp4" type="video/mp4">
       Your browser does not support the video tag.
-      </video></div>
+      </video></div> -->
       <img src='images/Frugal.png' width="160">
     </div>
     <script type="text/javascript">
@@ -109,8 +109,6 @@
 
 <!-- Projects -->
     </tbody></table>
-
-    
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
       <tr>
         <td>
@@ -118,26 +116,130 @@
         </td>
       </tr>
     </tbody></table>
+
+    
+
     <table width="100%" align="center" border="0" cellpadding="20"><tbody>
-          
-            <tr onmouseout="udl_stop()" onmouseover="udl_start()">
+            <!-- ##### project template start here ##### -->
+            <tr onmouseout="rnav_stop()" onmouseover="rnav_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
                 <div class="one">
-                  <div class="two" id='udl_image'><video  width=100% height=100% muted autoplay loop>
-                  <!-- <source src="images/camp.mp4" type="video/mp4"> -->
+                  <div class="two" id='rnav_image'> <img src='images/RobotNav1.gif' width="100%" height="100%" alt="Robot Navigation GIF" >
+                  </div>
+                  <!-- <div class="two" id='udl_image'>
+                    <video  width=100% height=100% muted autoplay loop>
+                    <source src="images/camp.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video>
+                  </div> -->
+                  <img src='images/RobotNav2.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function rnav_start() {
+                    document.getElementById('rnav_image').style.opacity = "1";
+                  }
+            
+                  function rnav_stop() {
+                    document.getElementById('rnav_image').style.opacity = "0";
+                  }
+                  rnav_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <!-- <a>
+                  <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
+                </a> -->
+                <span class="papertitle">Intelligent Robot Navigation with Semantic Path Planning</span>
+                <br>
+                <!-- <a href="https://keunhong.com/">Keunhong Park</a>,
+                <a href="https://henzler.github.io/">Philipp Henzler</a>,
+                <a href="https://bmild.github.io/">Ben Mildenhall</a>,
+                <strong>Jonathan T. Barron</strong>,
+                <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>
+                <br> -->
+                <em>NYCU CSIC30058: Perception and Decision Making in Intelligent Systems </em> 
+                <br>
+                <em>2023-12-31</em>
+                <br>
+                <a href="https://github.com/kkennethwu/pdm-f23">github</a>
+                /
+                <!-- <a href="https://arxiv.org/abs/2308.10902">arXiv</a> -->
+                <p></p>
+                <p>
+                  A robot navigation system utilized 3D semantic reconstruction information with SLAM. 
+                </p>
+              </td>
+            </tr>    
+            <!-- ##### project template end here ##### -->
+            <!-- ##### project template start here ##### -->
+            <tr onmouseout="seg_stop()" onmouseover="seg_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='seg_image'> <img src='images/WaterSeg2.png' width="100%" height="100%" alt="Robot Navigation GIF" >
+                  </div>
+                  <!-- <div class="two" id='udl_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/camp.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div> -->
+                  
+                  <img src='images/WaterSeg1.png' width="160">
+                </div>
+                <script type="text/javascript">
+                  function seg_start() {
+                    document.getElementById('seg_image').style.opacity = "1";
+                  }
+            
+                  function seg_stop() {
+                    document.getElementById('seg_image').style.opacity = "0";
+                  }
+                  seg_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <!-- <a>
+                  <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
+                </a> -->
+                <span class="papertitle">Boosting Zero-shot water segmentation</span>
+                <br>
+                <!-- <a href="https://keunhong.com/">Keunhong Park</a>,
+                <a href="https://henzler.github.io/">Philipp Henzler</a>,
+                <a href="https://bmild.github.io/">Ben Mildenhall</a>,
+                <strong>Jonathan T. Barron</strong>,
+                <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>
+                <br> -->
+                <em>NYCU EEIE30068: Digital Image Processing</em> <font color=#FF8080><strong>(1st place in DIP water segmentation challenge)</strong></font>
+                <br>
+                <em>2023-12-31</em>
+                <br>
+                <a href="https://github.com/linjohnss/DIP_Final">github</a>
+                /
+                <!-- <a href="https://arxiv.org/abs/2308.10902">arXiv</a> -->
+                <p></p>
+                <p>
+                Boosting CLIP-basde zero-shot text-prompt segmentation with fast bilateral solver.
+                </p>
+              </td>
+            </tr>    
+            <!-- ##### project template end here ##### -->
+
+            <tr onmouseout="lake_stop()" onmouseover="lake_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='lake_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/UnderTheLake.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                   </video></div>
                   <img src='images/UnderTheLake.png' width="160">
                 </div>
                 <script type="text/javascript">
-                  function udl_start() {
-                    document.getElementById('udl_image').style.opacity = "1";
+                  function lake_start() {
+                    document.getElementById('lake_image').style.opacity = "1";
                   }
             
-                  function udl_stop() {
-                    document.getElementById('udl_image').style.opacity = "0";
+                  function lake_stop() {
+                    document.getElementById('lake_image').style.opacity = "0";
                   }
-                  udl_stop()
+                  lake_stop()
                 </script>
               </td>
               <td style="padding:20px;width:75%;vertical-align:middle">
@@ -164,7 +266,8 @@
                 VR horror immersive experience on scene captured from real campus.
                 </p>
               </td>
-            </tr>  
+            </tr>
+            
 
             <!-- <tr>
               <td style="padding:20px;width:25%;vertical-align:middle"><img src="images/cvf.jpg"></td>
@@ -208,6 +311,8 @@
                 <a href="https://jonbarron.info/data/cvpr2023_llm_workshop_annotated.pdf">Scholars & Big Models: How Can Academics Adapt?</a>
               </td>
             </tr> -->
+
+          
             
             
           </tbody></table>
