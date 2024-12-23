@@ -86,6 +86,61 @@
 
 
 <!-- Publications -->
+<tr onmouseout="aura_stop()" onmouseover="aura_start()">
+  <td style="padding:20px;width:25%;vertical-align:middle">
+    <div class="one" style="display: flex; align-items: center; justify-content: center;">
+      <!-- 放在前面的影片會在底層 -->
+      <video width=100% height=100% muted autoplay loop style="margin: auto;">
+        <source src="images/Aura.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- 放在後面的 div 會在上層（hover時出現） -->
+      <div class="two" id='aura_image' style="display: flex; align-items: center; justify-content: center;">
+        <img src='images/Aura.png' width="160" style="margin: auto;">
+      </div>
+    </div>
+    <script type="text/javascript">
+      function aura_start() {
+        document.getElementById('aura_image').style.opacity = "1";
+      }
+
+      function aura_stop() {
+        document.getElementById('aura_image').style.opacity = "0";
+      }
+      aura_stop()
+    </script>
+  </td>
+  <td style="padding:20px;width:75%;vertical-align:middle">
+    <a href="">
+      <span class="papertitle">AuraFusion360: Augmented Unseen Region Alignment for Reference-based 360° Unbounded Scene Inpainting</span>
+    </a>
+    <br>
+    <strong>Chung-Ho Wu*<strong>,
+    <a href="">Yang-Jung Chen*</a>,
+    <a href="">Ying-Haun Chen</a>,
+    <a href="">Jie-Ying Lee</a>,
+    <a href="">Bo-Hsu Ke</a>,
+    <a href="">Chun-Wei Tuan Mu</a>
+    <a href="">Yi-Chuan Huang</a>
+    <a href="https://linjohnss.github.io/">Ching-Yang Lin</a>,
+    <a href="">Min-Hung Chen</a>
+    <a href="https://sites.google.com/site/yylinweb/">Yen-Yu Lin</a>
+    <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a>
+    <br>
+    <em>Under Review</em>
+    <br>
+    <a href="">project page</a>
+    /
+    <a href="">arXiv</a>
+    /
+    <a href="">github</a> / (under reconstruction)
+    <p></p>
+    <p>
+      Developed a reference-guided 3D inpainting approach utilizing SDEdit on aligned Gaussian initialization, and created a 360° inpainting dataset (360-USID) for comprehensive evaluation.
+    </p>
+  </td>
+</tr>
+
 
 <tr onmouseout="frugal_stop()" onmouseover="frugal_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
@@ -117,8 +172,8 @@
       <span class="papertitle">FrugalNeRF: Fast Convergence for Few-shot Novel View Synthesis without Learned Priors</span>
     </a>
     <br>
-    <a href="https://linjohnss.github.io/">Ching-Yang Lin</a>,
-    <strong>Chung-Ho Wu<strong>,
+    <a href="https://linjohnss.github.io/">Ching-Yang Lin*</a>,
+    <strong>Chung-Ho Wu*<strong>,
     <a href="">Changhan Yeh</a>,
     <a href="">Alex Yen</a>,
     <a href="https://sunset1995.github.io/">Cheng Sun</a>,
@@ -155,8 +210,8 @@
             <!-- ##### project template start here ##### -->
             <tr onmouseout="rnav_stop()" onmouseover="rnav_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one">
-                  <div class="two" id='rnav_image'> <img src='images/RobotNav1.gif' width="100%" height="100%" alt="Robot Navigation GIF" >
+                <div class="one" style="display: flex; align-items: center; justify-content: center;">
+                  <div class="two" id='rnav_image'> <img src='images/RobotNav1.gif' width="100%" height="100%" alt="Robot Navigation GIF" style="margin: auto;">
                   </div>
                   <!-- <div class="two" id='udl_image'>
                     <video  width=100% height=100% muted autoplay loop>
@@ -164,7 +219,7 @@
                     Your browser does not support the video tag.
                     </video>
                   </div> -->
-                  <img src='images/RobotNav2.png' width="160">
+                  <img src='images/RobotNav2.png' width="160" style="margin: auto;">
                 </div>
                 <script type="text/javascript">
                   function rnav_start() {
@@ -206,15 +261,11 @@
             <!-- ##### project template start here ##### -->
             <tr onmouseout="seg_stop()" onmouseover="seg_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one">
-                  <div class="two" id='seg_image'> <img src='images/WaterSeg2.png' width="100%" height="100%" alt="Robot Navigation GIF" >
+                <div class="one" style="display: flex; align-items: center; justify-content: center;">
+                  <div class="two" id='seg_image' style="display: flex; align-items: center; justify-content: center;">
+                    <img src='images/WaterSeg2.png' width="100%" height="100%" alt="Water Seg" style="margin: auto;">
                   </div>
-                  <!-- <div class="two" id='udl_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/camp.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                  </video></div> -->
-                  
-                  <img src='images/WaterSeg1.png' width="160">
+                  <img src='images/WaterSeg1.png' width="160" style="margin: auto;">
                 </div>
                 <script type="text/javascript">
                   function seg_start() {
@@ -256,12 +307,14 @@
 
             <tr onmouseout="lake_stop()" onmouseover="lake_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one">
-                  <div class="two" id='lake_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/UnderTheLake.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                  </video></div>
-                  <img src='images/UnderTheLake.png' width="160">
+                <div class="one" style="display: flex; align-items: center; justify-content: center;">
+                  <div class="two" id='lake_image' style="display: flex; align-items: center; justify-content: center;">
+                    <video width=100% height=100% muted autoplay loop style="margin: auto;">
+                      <source src="images/UnderTheLake.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <img src='images/UnderTheLake.png' width="160" style="margin: auto;">
                 </div>
                 <script type="text/javascript">
                   function lake_start() {
