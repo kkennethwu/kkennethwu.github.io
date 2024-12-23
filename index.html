@@ -7,7 +7,7 @@
 
     <meta name="author" content="Chung-Ho Wu">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon/me-pixel.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     
   </head>
@@ -35,39 +35,71 @@
 				  <!-- <a href="https://www.threads.net/@jonbarron">Threads</a> &nbsp;/&nbsp; -->
 				  <!-- <a href="https://bsky.app/profile/jonbarron.bsky.social">Bluesky</a> &nbsp;/&nbsp; -->
                   <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
-                  <a href="https://github.com/kkennethwu/">Github</a>
+                  <a href="https://github.com/kkennethwu/">GitHub</a>
                 </p>
                 <p>
-                  latest update: 2024-12-18
+                  latest update: 2024-12-23
                 </p>
               </td>
-              <td style="padding:2.5%;width:40%;max-width:40%">
-                <a href="images/ChungHoWu.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/ChungHoWu.jpg" class="hoverZoomLink"></a>
+              <td style="padding:2.5%;width:40%;max-width:40%" onmouseout="profile_stop()" onmouseover="profile_start()">
+                <div style="display: flex; flex-direction: column; align-items: center; transform: scale(1.25);">  <!-- 使用 scale 放大 -->
+                  <div class="one">
+                    <div class="two" id='profile_image'>
+                      <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" src="images/ChungHoWu.gif" alt="profile gif">
+                    </div>
+                    <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" src="images/ChungHoWu.jpg" alt="profile photo">
+                  </div>
+                  <p style="margin-top: 10px; font-size: 0.8em;">
+                    Try hovering on the profile photo!
+                  </p>
+                </div>
               </td>
             </tr>
           </tbody></table>
+          <script type="text/javascript">
+            function profile_start() {
+              document.getElementById('profile_image').style.opacity = "1";
+            }
+          
+            function profile_stop() {
+              document.getElementById('profile_image').style.opacity = "0";
+            }
+            profile_stop()
+          </script>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
               <tr>
               <td style="padding:20px;width:100%;vertical-align:middle">
                 <h2>Publications</h2>
                 <p>
-                  I'm interested in computer vision, machine learning, image processing, XR, robotics topics. Currently, Most of my research is about novel view synthesis.
+                  I'm interested in computer vision, machine learning, image processing, XR, robotics topics. Currently, Most of my research is about novel view synthesis, generative ai.
                 </p>
               </td>
             </tr>
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+<!-- News -->
+
+
+<!-- Experiences -->
+
+
 
 <!-- Publications -->
 
 <tr onmouseout="frugal_stop()" onmouseover="frugal_start()">
   <td style="padding:20px;width:25%;vertical-align:middle">
     <div class="one">
-      <div class="two" id='frugal_image'><video  width=100% height=100% muted autoplay loop>
-      <source src="images/Frugal.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-      </video></div>
-      <img src='images/Frugal.png' width="160">
+      <div class="two" id='frugal_image'>
+        <video width=100% height=100% muted autoplay loop>
+          <source src="images/ratio.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <video width=100% height=100% muted autoplay loop>
+        <source src="images/Frugal.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
     <script type="text/javascript">
       function frugal_start() {
@@ -81,11 +113,11 @@
     </script>
   </td>
   <td style="padding:20px;width:75%;vertical-align:middle">
-    <a href="">
+    <a href="https://linjohnss.github.io/frugalnerf/">
       <span class="papertitle">FrugalNeRF: Fast Convergence for Few-shot Novel View Synthesis without Learned Priors</span>
     </a>
     <br>
-    <a href="">Ching-Yang Lin</a>,
+    <a href="https://linjohnss.github.io/">Ching-Yang Lin</a>,
     <strong>Chung-Ho Wu<strong>,
     <a href="">Changhan Yeh</a>,
     <a href="">Alex Yen</a>,
@@ -94,11 +126,11 @@
     <br>
     <em>Under Review</em>
     <br>
-    <a href="">project page</a>
+    <a href="https://linjohnss.github.io/frugalnerf/">project page</a>
     /
-    <a href="">arXiv</a>
+    <a href="https://arxiv.org/abs/2410.16271">arXiv</a>
     /
-    (under reconstruction)
+    <a href="">github</a>(under reconstruction)
     <p></p>
     <p>
     Utilizing self-guided adaptation of multi-scale voxel grid acheives fast convergence from sparse inputs.
