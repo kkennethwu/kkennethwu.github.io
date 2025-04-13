@@ -1,456 +1,722 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-    <title>Chung-Ho Wu</title>
-
-    <meta name="author" content="Chung-Ho Wu">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon/flamingo.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Chung-Ho Wu">
+  <link rel="shortcut icon" href="images/c_logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@800&display=swap" rel="stylesheet">
+  <title>Chung-Ho Wu</title>
+  <style>
+    :root {
+      --primary-green: #1D3F30;
+      --secondary-green: #77644d;
+      --accent-beige: #D6BA9C;
+      --accent-yellow: #F3C623;
+      --accent-orange: #D96E43;
+      --bg-color: #d1cac1;
+      --text-color: #1D3F30;
+      --link-color: #3A7D44;
+      --link-hover: #D96E43;
+      --card-bg: #FFFFFF;
+      --card-border: #D6BA9C;
+    }
     
-  </head>
+    [data-theme="dark"] {
+      --primary-green: #d1cac1;
+      --secondary-green: #77644d;
+      --accent-beige: #D6BA9C;
+      --accent-yellow: #F3C623;
+      --accent-orange: #D96E43;
+      --bg-color: #1D3F30;
+      --text-color: #F8F0E5;
+      --link-color: #6AAF84;
+      --link-hover: #D96E43;
+      --card-bg: #2A4A3D;
+      --card-border: #D6BA9C;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    header {
+      padding: 80px 20px 20px;
+      position: relative;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 5px;
+      background: linear-gradient(90deg,
+        var(--primary-green) 0%,
+        var(--primary-green) 20%,
+        var(--secondary-green) 20%,
+        var(--secondary-green) 40%,
+        var(--accent-beige) 40%,
+        var(--accent-beige) 60%,
+        var(--accent-yellow) 60%,
+        var(--accent-yellow) 80%,
+        var(--accent-orange) 80%,
+        var(--accent-orange) 100%
+      );
+      border-radius: 3px;
+    }
+    header::after::before {
+      content: '';
+      display: grid;
+      grid-template-columns: 
+        var(--primary-green) 20%
+        var(--secondary-green) 20%
+        var(--accent-beige) 20%
+        var(--accent-yellow) 20%
+        var(--accent-orange) 20%;
+    }
+    header::after::after {
+      content: '';
+      flex: 1;
+      background: var(--secondary-green);
+    }
+    header::after {
+      display: flex;
+    }
+    header::after > * {
+      flex: 1;
+      height: 100%;
+    }
+    header::after {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    header::after > :nth-child(1) { background: var(--primary-green); }
+    header::after > :nth-child(2) { background: var(--secondary-green); }
+    header::after > :nth-child(3) { background: var(--accent-beige); }
+    header::after > :nth-child(4) { background: var(--accent-yellow); }
+    header::after > :nth-child(5) { background: var(--accent-orange); }
+    header h1 {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 0;
+      color: var(--primary-green);
+      text-shadow: 1px 1px 0 var(--accent-beige);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    header h1 .english-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.6em;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+    header h1 .chinese-name {
+        font-family: "Noto Serif TC", serif;
+        font-optical-sizing: auto;
+        font-weight: 800;
+        font-style: normal;
+        font-size: 0.6em;
+    }
+    header h2 {
+      font-size: 24px;
+      margin: 10px 0 50px;
+      font-weight: 500;
+      color: var(--secondary-green);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      letter-spacing: -0.3px;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 0 20px;
+      max-width: 1000px;
+      width: 100%;
+    }
+    .section {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(29, 63, 48, 0.07);
+      transition: transform 0.3s ease;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+    }
+    .section h2 {
+      color: var(--primary-green);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 28px;
+      position: relative;
+      display: inline-block;
+    }
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-yellow);
+    }
+    .profile-section {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .profile-image {
+      width: 200px;
+      height: 300px;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+      margin-top: 15px;
+    }
+    .profile-image .one {
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--accent-beige);
+      overflow: hidden;
+    }
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-info {
+      flex: 1;
+    }
+    .profile-info p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .profile-info a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .profile-info a:hover {
+      color: var(--link-hover);
+      background-color: var(--bg-color);
+    }
+    .news-item {
+      text-align: left;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .news-item:hover {
+      background-color: var(--bg-color);
+    }
+    .news-item strong {
+      color: var(--primary-green);
+    }
+    .experience-item {
+      text-align: left;
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 3px solid var(--secondary-green);
+      transition: border-color 0.3s ease;
+    }
+    .experience-item:hover {
+      border-left-color: var(--accent-orange);
+    }
+    .experience-item img {
+      height: 14px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .experience-item a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .experience-item a:hover {
+      color: var(--link-hover);
+    }
+    .publication-item, .project-item {
+      text-align: left;
+      margin: 20px 0;
+      display: flex;
+      gap: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .publication-item:hover, .project-item:hover {
+      background-color: var(--bg-color);
+    }
+    .publication-media, .project-media {
+      width: 25%;
+      min-width: 200px;
+    }
+    .publication-content, .project-content {
+      flex: 1;
+    }
+    .publication-title, .project-title {
+      font-weight: bold;
+      color: var(--primary-green);
+      margin-bottom: 5px;
+    }
+    .publication-authors a, .project-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .publication-authors a:hover, .project-links a:hover {
+      color: var(--link-hover);
+      background-color: var(--bg-color);
+    }
+    .publication-links, .project-links {
+      margin: 10px 0;
+    }
+    .publication-links a, .project-links a {
+      color: var(--link-color);
+      text-decoration: none;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    .publication-links a:hover, .project-links a:hover {
+      color: var(--link-hover);
+      background-color: var(--bg-color);
+    }
+    .media-container {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      border-radius: 0px;
+      overflow: hidden;
+      border: 0px solid var(--accent-beige);
+      transition: border-color 0.3s ease;
+    }
+    .media-container:hover {
+      border-color: var(--accent-orange);
+    }
+    .media-container img,
+    .media-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hover-text {
+      font-size: 11px;
+      text-align: center;
+      margin-top: 0px;
+      color: var(--secondary-green);
+      position: absolute;
+      width: 100%;
+      top: -45px;
+      z-index: 10;
+    }
+    .hover-text a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .hover-text a:hover {
+      color: var(--link-hover);
+    }
+    .award {
+      color: var(--accent-orange);
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: var(--secondary-green);
+      padding-bottom: 40px;
+    }
+    .one {
+      position: relative;
+    }
+    .two {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+    }
+    .theme-toggle:hover {
+      background: var(--accent-beige);
+      color: var(--primary-green);
+    }
+    .theme-toggle .icon {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span class="icon">🌓</span>
+    <span class="text">Toggle Theme</span>
+  </button>
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Chung-Ho (Kenneth) Wu, 吳中赫
-                </p>
-                <p>I am currently pursuing my Master's degree at <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a> (It was called National Chiao Tung University before), majoring Multimedia Engineering in <a href="https://www.ccs.nycu.edu.tw/">College of Computer Science</a>, and advised by <a href="https://yulunalexliu.github.io/">Prof. Yu-Lun, Liu</a> at CompPhoto Lab, specializing in 3D computer vision. I earned my bachelor's degree in <a href="https://www.cs.nycu.edu.tw/">Computer Science </a> in National Yang Ming Chiao Tung University in 2023.
-                </p>
-                <p>
-                  In addition, 
-                  I previously worked at ITRI as a 3D Modeling Intern, focusing on the research of 3D reconstruction.
-                  I also worked at Qualcomm as an AISW intern, focusing on projects related to LLM and model converters.
-                  Currently, I am working at ColegaAI as an AI and Computer Vision Intern.
-                </p>
-                <p style="text-align:center">
-                  <a href="mailto:kkennethwu@gmail.com">Email</a> &nbsp;/&nbsp;
-                  <a href="data/ChungHoWu-CV.pdf">CV</a> &nbsp;/&nbsp;
-                  <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://scholar.google.com/citations?hl=en&user=jktWnL8AAAAJ">Scholar</a> &nbsp;/&nbsp; -->
-				  <!-- <a href="https://www.threads.net/@jonbarron">Threads</a> &nbsp;/&nbsp; -->
-				  <!-- <a href="https://bsky.app/profile/jonbarron.bsky.social">Bluesky</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
-                  <a href="https://github.com/kkennethwu/">GitHub</a> &nbsp;/&nbsp;
-                  <a href="https://www.linkedin.com/in/chung-ho-wu/">Linkedin</a>
-                </p>
-                <p>
-                  latest update: 2025-02-10
-                </p>
-              </td>
-              <td style="padding:2.5%;width:40%;max-width:40%" onmouseout="profile_stop()" onmouseover="profile_start()">
-                <div style="display: flex; flex-direction: column; align-items: center; transform: scale(1.25);">  <!-- 使用 scale 放大 -->
-                  <div class="one">
-                    <div class="two" id='profile_image'>
-                      <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" src="images/ChungHoWu.gif" alt="profile gif">
-                    </div>
-                    <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;" src="images/ChungHoWu.jpg" alt="profile photo">
-                  </div>
-                  <p style="margin-top: 2px; font-size: 11px; line-height: 1.4; word-wrap: break-word; text-align: center;">
-                    Try hovering on the profile photo!<br>
-                    (generated by <a href="https://ai-draw.tokyo/en/" style="font-size: inherit;">link</a>)
-                  </p>
-                </div>
-              </td>
-            </tr>
-          </tbody></table>
-          <script type="text/javascript">
-            function profile_start() {
-              document.getElementById('profile_image').style.opacity = "1";
-            }
-          
-            function profile_stop() {
-              document.getElementById('profile_image').style.opacity = "0";
-            }
-            profile_stop()
-          </script>
+  <header>
+    <div class="color-bar">
+    </div>
+    <h1>Chung-Ho Wu (Kenneth) 吳中赫</h1>
+    <!-- <h1 style="margin-bottom: -30px;">
+      <img src="images/C_logo_long.png" alt="C" id="light-logo" class="c-logo" style="height: 2em; width: auto; vertical-align: middle;"/>
+      <img src="images/C_logo_long_revert.png" alt="C" id="dark-logo" class="c-logo" style="height: 2em; width: auto; vertical-align: middle; display: none;"/>
+    </h1>
+    <h1 style="margin-top: 0;">
+      <span class="english-name">Kenneth</span> <span class="chinese-name">吳中赫</span>
+    </h1> -->
+    <h2><strong>AI Software Engineer</strong></h2>
+  </header>
 
-
-<!-- News -->
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-  <tr>
-    <td style="padding:20px;width:100%;vertical-align:middle">
-      <h2>News ! ! !</h2>
+  <div class="content">
+    <div class="section profile-section">
+      <div class="profile-image">
+        <!-- <p class="hover-text">
+          Try hovering on the profile photo!<br>
+          (generated by <a href="https://ai-draw.tokyo/en/" style="font-size: inherit;">KlingAI</a>)
+        </p> -->
+        <div class="one">
+          <div class="two" id='profile_image'>
+            <video width="100%" height="100%" muted autoplay loop>
+              <source src="images/ChungHoWu.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <img src="images/ChungHoWu.jpg" alt="profile photo">
+        </div>
+      </div>
+      <div class="profile-info">
+        <p>I am currently pursuing my Master's degree at <a href="https://www.nycu.edu.tw/nycu/en/index">National Yang Ming Chiao Tung University</a> (It was called National Chiao Tung University before), majoring Multimedia Engineering in <a href="https://www.ccs.nycu.edu.tw/">College of Computer Science</a>, and advised by <a href="https://yulunalexliu.github.io/">Prof. Yu-Lun, Liu</a> at CompPhoto Lab, specializing in 3D computer vision. I earned my bachelor's degree in <a href="https://www.cs.nycu.edu.tw/">Computer Science </a> in National Yang Ming Chiao Tung University in 2023.</p>
+        <p>In addition, I previously worked at ITRI as a 3D Modeling Intern, focusing on the research of 3D reconstruction. I also worked at Qualcomm as an AISW intern, focusing on projects related to LLM and model converters. Currently, I am working at ColegaAI as an AI and Computer Vision Intern.</p>
         <p>
-          <strong>[2025/02/10] Release AuraFusion360 project page and arXiv paper.</strong>
+          <a href="mailto:kkennethwu@gmail.com">Email</a> &nbsp;/&nbsp;
+          <a href="data/ChungHoWu-CV.pdf">CV</a> &nbsp;/&nbsp;
+          <a href="https://github.com/kkennethwu/">GitHub</a> &nbsp;/&nbsp;
+          <a href="https://www.linkedin.com/in/chung-ho-wu/">Linkedin</a>
         </p>
-        <p>
-          <strong>[2024/10/21] Release FrugalNeRF project page and arXiv paper.</strong>
-        </p>
-      </td>
-    </tr>
-  </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <p>latest update: 2025-02-10</p>
+      </div>
+    </div>
 
+    <div class="section">
+      <h2>News</h2>
+      <div class="news-item">
+        <strong>[2025/02/10] Release AuraFusion360 project page and arXiv paper.</strong>
+      </div>
+      <div class="news-item">
+        <strong>[2024/10/21] Release FrugalNeRF project page and arXiv paper.</strong>
+      </div>
+    </div>
 
-
-<!-- Experiences -->
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-  <tr>
-    <td style="padding:20px;width:100%;vertical-align:middle">
+    <div class="section">
       <h2>Experiences</h2>
-        <p>
-          <img src="./images/ColegaAI.png" alt="ColegaAI icon" style="height: 14px; vertical-align: -0.5mm;"> AI and Computer Vision Intern @ <strong><a href="https://www.colega.ai/">ColegaAI</a></strong>  : 2025-01 - present <br>
-        </p>
-        <p>
-          <img src="./images/Qualcomm.png" alt="ColegaAI icon" style="height: 14px; vertical-align: bottom;">  AISW Intern @ <strong><a href="https://www.qualcomm.com/">Qualcomm</a></strong> : 2024-04 - 2024-10 <br>
-        </p>
-        <p>
-          <img src="./images/ITRI.png" alt="ITRI icon" style="height: 16px; vertical-align: bottom;">  3D Modeling Intern @ <strong><a href="https://www.itri.org.tw/">ITRI</a></strong> : 2023-04 - 2023-08
-        </p>
-      </td>
-    </tr>
-  </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <div class="experience-item">
+        <img src="./images/ColegaAI.png" alt="ColegaAI icon"> AI and Computer Vision Intern @ <strong><a href="https://www.colega.ai/">ColegaAI</a></strong> : 2025-01 - present
+      </div>
+      <div class="experience-item">
+        <img src="./images/Qualcomm.png" alt="Qualcomm icon"> AISW Intern @ <strong><a href="https://www.qualcomm.com/">Qualcomm</a></strong> : 2024-04 - 2024-10
+      </div>
+      <div class="experience-item">
+        <img src="./images/ITRI.png" alt="ITRI icon"> 3D Modeling Intern @ <strong><a href="https://www.itri.org.tw/">ITRI</a></strong> : 2023-04 - 2023-08
+      </div>
+    </div>
 
-
-
-<!-- Publications -->
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-  <tr>
-    <td style="padding:20px;width:100%;vertical-align:middle">
+    <div class="section">
       <h2>Publications</h2>
-        <p>
-          I'm interested in computer vision, machine learning, image processing, XR, robotics topics. Currently, Most of my research is about novel view synthesis and generative ai.
-        </p>
-      </td>
-    </tr>
-  </tbody></table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <p>I'm interested in computer vision, machine learning, image processing, XR, robotics topics. Currently, Most of my research is about novel view synthesis and generative ai.</p>
+      
+      <div class="publication-item">
+        <div class="publication-media">
+          <div class="media-container" onmouseout="aura_stop()" onmouseover="aura_start()">
+            <div class="one">
+              <video width="100%" height="100%" muted autoplay loop>
+                <source src="images/Aura.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="two" id='aura_image'>
+                <img src='images/Aura.png' width="100%" height="100%" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="publication-content">
+          <div class="publication-title">AuraFusion360: Augmented Unseen Region Alignment for Reference-based 360° Unbounded Scene Inpainting</div>
+          <div class="publication-authors">
+            <strong>Chung-Ho Wu*</strong>,
+            <a href="">Yang-Jung Chen*</a>,
+            <a href="">Ying-Haun Chen</a>,
+            <a href="https://jayinnn.dev/">Jie-Ying Lee</a>,
+            <a href="https://hentci.github.io/">Bo-Hsu Ke</a>,
+            <a href="">Chun-Wei Tuan Mu</a>
+            <a href="">Yi-Chuan Huang</a>
+            <a href="https://linjohnss.github.io/">Ching-Yang Lin</a>,
+            <a href="https://minhungchen.netlify.app/">Min-Hung Chen</a>
+            <a href="https://sites.google.com/site/yylinweb/">Yen-Yu Lin</a>
+            <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a>
+          </div>
+          <div class="publication-links">
+            <em>CVPR 2025</em><br>
+            <a href="https://kkennethwu.github.io/aurafusion360/">project page</a> /
+            <a href="http://arxiv.org/abs/2502.05176">arXiv</a> /
+            <a href="https://github.com/kkennethwu/AuraFusion360_official.git">code (coming soon)</a> /
+            <a href="https://huggingface.co/datasets/kkennethwu/360-USID">huggingface</a>
+          </div>
+          <p>Developed a reference-guided 3D inpainting approach utilizing SDEdit on aligned Gaussian initialization, and created a 360° inpainting dataset (360-USID) for comprehensive evaluation.</p>
+        </div>
+      </div>
 
-
-<tr onmouseout="aura_stop()" onmouseover="aura_start()">
-  <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one" style="display: flex; align-items: center; justify-content: center;">
-      <!-- 放在前面的影片會在底層 -->
-      <video width=100% height=100% muted autoplay loop style="margin: auto;">
-        <source src="images/Aura.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- 放在後面的 div 會在上層（hover時出現） -->
-      <div class="two" id='aura_image' style="display: flex; align-items: center; justify-content: center;">
-        <img src='images/Aura.png' width="160" style="margin: auto;">
+      <div class="publication-item">
+        <div class="publication-media">
+          <div class="media-container" onmouseout="frugal_stop()" onmouseover="frugal_start()">
+            <div class="one">
+              <video width="100%" height="100%" muted autoplay loop>
+                <source src="images/Frugal.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="two" id='frugal_image'>
+                <video width="100%" height="100%" muted autoplay loop>
+                  <source src="images/ratio.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="publication-content">
+          <div class="publication-title">FrugalNeRF: Fast Convergence for Few-shot Novel View Synthesis without Learned Priors</div>
+          <div class="publication-authors">
+            <a href="https://linjohnss.github.io/">Ching-Yang Lin*</a>,
+            <strong>Chung-Ho Wu*</strong>,
+            <a href="">Changhan Yeh</a>,
+            <a href="">Alex Yen</a>,
+            <a href="https://sunset1995.github.io/">Cheng Sun</a>,
+            <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a>
+          </div>
+          <div class="publication-links">
+            <em>CVPR 2025</em><br>
+            <a href="https://linjohnss.github.io/frugalnerf/">project page</a> /
+            <a href="https://arxiv.org/abs/2410.16271">arXiv</a> /
+            <a href="">code (coming soon)</a>
+          </div>
+          <p>Utilizing self-guided adaptation of multi-scale voxel grid acheives fast convergence from sparse inputs.</p>
+        </div>
       </div>
     </div>
-    <script type="text/javascript">
-      function aura_start() {
-        document.getElementById('aura_image').style.opacity = "1";
-      }
 
-      function aura_stop() {
-        document.getElementById('aura_image').style.opacity = "0";
-      }
-      aura_stop()
-    </script>
-  </td>
-  <td style="padding:20px;width:75%;vertical-align:middle">
-    <span class="papertitle">AuraFusion360: Augmented Unseen Region Alignment for Reference-based 360° Unbounded Scene Inpainting</span>
-    <br>
-    <strong>Chung-Ho Wu*<strong>,
-    <a href="">Yang-Jung Chen*</a>,
-    <a href="">Ying-Haun Chen</a>,
-    <a href="https://jayinnn.dev/">Jie-Ying Lee</a>,
-    <a href="https://hentci.github.io/">Bo-Hsu Ke</a>,
-    <a href="">Chun-Wei Tuan Mu</a>
-    <a href="">Yi-Chuan Huang</a>
-    <a href="https://linjohnss.github.io/">Ching-Yang Lin</a>,
-    <a href="https://minhungchen.netlify.app/">Min-Hung Chen</a>
-    <a href="https://sites.google.com/site/yylinweb/">Yen-Yu Lin</a>
-    <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a>
-    <br>
-    <em>CVPR 2025</em>
-    <br>
-    <a href="https://kkennethwu.github.io/aurafusion360/">project page</a>
-    /
-    <a href="http://arxiv.org/abs/2502.05176">arXiv</a>
-    /
-    <a href="https://github.com/kkennethwu/AuraFusion360_official.git">code (coming soon)</a>
-    /
-    <a href="https://huggingface.co/datasets/kkennethwu/360-USID">huggingface</a>
-    <p></p>
-    <p>
-      Developed a reference-guided 3D inpainting approach utilizing SDEdit on aligned Gaussian initialization, and created a 360° inpainting dataset (360-USID) for comprehensive evaluation.
-    </p>
-  </td>
-</tr>
-
-
-<tr onmouseout="frugal_stop()" onmouseover="frugal_start()">
-  <td style="padding:20px;width:25%;vertical-align:middle">
-    <div class="one">
-      <div class="two" id='frugal_image'>
-        <video width=100% height=100% muted autoplay loop>
-          <source src="images/ratio.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+    <div class="section">
+      <h2>Projects</h2>
+      
+      <div class="project-item">
+        <div class="project-media">
+          <div class="media-container" onmouseout="rnav_stop()" onmouseover="rnav_start()">
+            <div class="one">
+              <img src='images/RobotNav2.png' width="100%" height="100%" style="object-fit: cover;">
+              <div class="two" id='rnav_image'>
+                <img src='images/RobotNav1.gif' width="100%" height="100%" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">Intelligent Robot Navigation with Semantic Path Planning</div>
+          <div class="project-info">
+            <em>NYCU CSIC30058: Perception and Decision Making in Intelligent Systems</em><br>
+            <em>2023-12-31</em>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/kkennethwu/pdm-f23">github</a>
+          </div>
+          <p>A robot navigation system utilized 3D semantic reconstruction information with SLAM.</p>
+        </div>
       </div>
-      <video width=100% height=100% muted autoplay loop>
-        <source src="images/Frugal.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+
+      <div class="project-item">
+        <div class="project-media">
+          <div class="media-container" onmouseout="seg_stop()" onmouseover="seg_start()">
+            <div class="one">
+              <img src='images/WaterSeg1.png' width="100%" height="100%" style="object-fit: cover;">
+              <div class="two" id='seg_image'>
+                <img src='images/WaterSeg2.png' width="100%" height="100%" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">Boosting Zero-shot water segmentation</div>
+          <div class="project-info">
+            <em>NYCU EEIE30068: Digital Image Processing</em> <span style="color: #FF8080"><strong>(1st place in DIP water segmentation challenge)</strong></span><br>
+            <em>2023-12-31</em>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/linjohnss/DIP_Final">github</a>
+          </div>
+          <p>Boosting CLIP-basde zero-shot text-prompt segmentation with fast bilateral solver.</p>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-media">
+          <div class="media-container" onmouseout="lake_stop()" onmouseover="lake_start()">
+            <div class="one">
+              <img src='images/UnderTheLake.png' width="100%" height="100%" style="object-fit: cover;">
+              <div class="two" id='lake_image'>
+                <video width="100%" height="100%" muted autoplay loop style="object-fit: cover;">
+                  <source src="images/UnderTheLake.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-title">Under The Lake: VR Horror Immersive Experience</div>
+          <div class="project-info">
+            <em>NYCU CSIC30006: XR Camp</em> <span style="color: #FF8080"><strong>(XR Showcase Silver Award)</strong></span><br>
+            <em>2023-06-26</em>
+          </div>
+          <div class="project-links">
+            <a href="https://www.youtube.com/watch?v=XRwoxFspIz8">video</a>
+          </div>
+          <p>VR horror immersive experience on scene captured from real campus.</p>
+        </div>
+      </div>
     </div>
-    <script type="text/javascript">
-      function frugal_start() {
-        document.getElementById('frugal_image').style.opacity = "1";
+  </div>
+
+  <footer>
+    &copy; 2025 Chung-Ho Wu. All rights reserved.
+  </footer>
+
+  <script type="text/javascript">
+    function profile_start() {
+      document.getElementById('profile_image').style.opacity = "1";
+    }
+  
+    function profile_stop() {
+      document.getElementById('profile_image').style.opacity = "0";
+    }
+    profile_stop();
+
+    // Add event listeners for profile image hover
+    document.querySelector('.profile-image .one').addEventListener('mouseover', profile_start);
+    document.querySelector('.profile-image .one').addEventListener('mouseout', profile_stop);
+
+    function aura_start() {
+      document.getElementById('aura_image').style.opacity = "1";
+    }
+
+    function aura_stop() {
+      document.getElementById('aura_image').style.opacity = "0";
+    }
+    aura_stop();
+
+    function frugal_start() {
+      document.getElementById('frugal_image').style.opacity = "1";
+    }
+
+    function frugal_stop() {
+      document.getElementById('frugal_image').style.opacity = "0";
+    }
+    frugal_stop();
+
+    function rnav_start() {
+      document.getElementById('rnav_image').style.opacity = "1";
+    }
+
+    function rnav_stop() {
+      document.getElementById('rnav_image').style.opacity = "0";
+    }
+    rnav_stop();
+
+    function seg_start() {
+      document.getElementById('seg_image').style.opacity = "1";
+    }
+
+    function seg_stop() {
+      document.getElementById('seg_image').style.opacity = "0";
+    }
+    seg_stop();
+
+    function lake_start() {
+      document.getElementById('lake_image').style.opacity = "1";
+    }
+
+    function lake_stop() {
+      document.getElementById('lake_image').style.opacity = "0";
+    }
+    lake_stop();
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      
+      // Toggle logo visibility
+      const lightLogo = document.getElementById('light-logo');
+      const darkLogo = document.getElementById('dark-logo');
+      if (newTheme === 'dark') {
+        lightLogo.style.display = 'none';
+        darkLogo.style.display = 'inline';
+      } else {
+        lightLogo.style.display = 'inline';
+        darkLogo.style.display = 'none';
       }
+      
+      // Save theme preference
+      localStorage.setItem('theme', newTheme);
+    }
 
-      function frugal_stop() {
-        document.getElementById('frugal_image').style.opacity = "0";
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      // Set initial logo visibility based on saved theme
+      const lightLogo = document.getElementById('light-logo');
+      const darkLogo = document.getElementById('dark-logo');
+      if (savedTheme === 'dark') {
+        lightLogo.style.display = 'none';
+        darkLogo.style.display = 'inline';
+      } else {
+        lightLogo.style.display = 'inline';
+        darkLogo.style.display = 'none';
       }
-      frugal_stop()
-    </script>
-  </td>
-  <td style="padding:20px;width:75%;vertical-align:middle">
-    <span class="papertitle">FrugalNeRF: Fast Convergence for Few-shot Novel View Synthesis without Learned Priors</span>
-    <br>
-    <a href="https://linjohnss.github.io/">Ching-Yang Lin*</a>,
-    <strong>Chung-Ho Wu*<strong>,
-    <a href="">Changhan Yeh</a>,
-    <a href="">Alex Yen</a>,
-    <a href="https://sunset1995.github.io/">Cheng Sun</a>,
-    <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a>
-    <br>
-    <em>CVPR 2025</em>
-    <br>
-    <a href="https://linjohnss.github.io/frugalnerf/">project page</a>
-    /
-    <a href="https://arxiv.org/abs/2410.16271">arXiv</a>
-    /
-    <a href="">code (comming soon) </a>
-    <p></p>
-    <p>
-    Utilizing self-guided adaptation of multi-scale voxel grid acheives fast convergence from sparse inputs.
-    </p>
-  </td>
-</tr>
-
-
-<!-- Projects -->
-    </tbody></table>
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20"><tbody>
-      <tr>
-        <td>
-          <h2>Projects</h2>
-        </td>
-      </tr>
-    </tbody></table>
-
-    
-
-    <table width="100%" align="center" border="0" cellpadding="20"><tbody>
-            <!-- ##### project template start here ##### -->
-            <tr onmouseout="rnav_stop()" onmouseover="rnav_start()">
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one" style="display: flex; align-items: center; justify-content: center;">
-                  <div class="two" id='rnav_image'> <img src='images/RobotNav1.gif' width="100%" height="100%" alt="Robot Navigation GIF" style="margin: auto;">
-                  </div>
-                  <!-- <div class="two" id='udl_image'>
-                    <video  width=100% height=100% muted autoplay loop>
-                    <source src="images/camp.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                    </video>
-                  </div> -->
-                  <img src='images/RobotNav2.png' width="160" style="margin: auto;">
-                </div>
-                <script type="text/javascript">
-                  function rnav_start() {
-                    document.getElementById('rnav_image').style.opacity = "1";
-                  }
-            
-                  function rnav_stop() {
-                    document.getElementById('rnav_image').style.opacity = "0";
-                  }
-                  rnav_stop()
-                </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <!-- <a>
-                  <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
-                </a> -->
-                <span class="papertitle">Intelligent Robot Navigation with Semantic Path Planning</span>
-                <br>
-                <!-- <a href="https://keunhong.com/">Keunhong Park</a>,
-                <a href="https://henzler.github.io/">Philipp Henzler</a>,
-                <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-                <strong>Jonathan T. Barron</strong>,
-                <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>
-                <br> -->
-                <em>NYCU CSIC30058: Perception and Decision Making in Intelligent Systems </em> 
-                <br>
-                <em>2023-12-31</em>
-                <br>
-                <a href="https://github.com/kkennethwu/pdm-f23">github</a>
-                /
-                <!-- <a href="https://arxiv.org/abs/2308.10902">arXiv</a> -->
-                <p></p>
-                <p>
-                  A robot navigation system utilized 3D semantic reconstruction information with SLAM. 
-                </p>
-              </td>
-            </tr>    
-            <!-- ##### project template end here ##### -->
-            <!-- ##### project template start here ##### -->
-            <tr onmouseout="seg_stop()" onmouseover="seg_start()">
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one" style="display: flex; align-items: center; justify-content: center;">
-                  <div class="two" id='seg_image' style="display: flex; align-items: center; justify-content: center;">
-                    <img src='images/WaterSeg2.png' width="100%" height="100%" alt="Water Seg" style="margin: auto;">
-                  </div>
-                  <img src='images/WaterSeg1.png' width="160" style="margin: auto;">
-                </div>
-                <script type="text/javascript">
-                  function seg_start() {
-                    document.getElementById('seg_image').style.opacity = "1";
-                  }
-            
-                  function seg_stop() {
-                    document.getElementById('seg_image').style.opacity = "0";
-                  }
-                  seg_stop()
-                </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <!-- <a>
-                  <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
-                </a> -->
-                <span class="papertitle">Boosting Zero-shot water segmentation</span>
-                <br>
-                <!-- <a href="https://keunhong.com/">Keunhong Park</a>,
-                <a href="https://henzler.github.io/">Philipp Henzler</a>,
-                <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-                <strong>Jonathan T. Barron</strong>,
-                <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>
-                <br> -->
-                <em>NYCU EEIE30068: Digital Image Processing</em> <font color=#FF8080><strong>(1st place in DIP water segmentation challenge)</strong></font>
-                <br>
-                <em>2023-12-31</em>
-                <br>
-                <a href="https://github.com/linjohnss/DIP_Final">github</a>
-                /
-                <!-- <a href="https://arxiv.org/abs/2308.10902">arXiv</a> -->
-                <p></p>
-                <p>
-                Boosting CLIP-basde zero-shot text-prompt segmentation with fast bilateral solver.
-                </p>
-              </td>
-            </tr>    
-            <!-- ##### project template end here ##### -->
-
-            <tr onmouseout="lake_stop()" onmouseover="lake_start()">
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one" style="display: flex; align-items: center; justify-content: center;">
-                  <div class="two" id='lake_image' style="display: flex; align-items: center; justify-content: center;">
-                    <video width=100% height=100% muted autoplay loop style="margin: auto;">
-                      <source src="images/UnderTheLake.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <img src='images/UnderTheLake.png' width="160" style="margin: auto;">
-                </div>
-                <script type="text/javascript">
-                  function lake_start() {
-                    document.getElementById('lake_image').style.opacity = "1";
-                  }
-            
-                  function lake_stop() {
-                    document.getElementById('lake_image').style.opacity = "0";
-                  }
-                  lake_stop()
-                </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <!-- <a>
-                  <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
-                </a> -->
-                <span class="papertitle">Under The Lake: VR Horror Immersive Experience</span>
-                <br>
-                <!-- <a href="https://keunhong.com/">Keunhong Park</a>,
-                <a href="https://henzler.github.io/">Philipp Henzler</a>,
-                <a href="https://bmild.github.io/">Ben Mildenhall</a>,
-                <strong>Jonathan T. Barron</strong>,
-                <a href="http://www.ricardomartinbrualla.com/">Ricardo Martin-Brualla</a>
-                <br> -->
-                <em>NYCU CSIC30006: XR Camp</em> <font color=#FF8080><strong>(XR Showcase Silver Award)</strong></font>
-                <br>
-                <em>2023-06-26</em>
-                <br>
-                <a href="https://www.youtube.com/watch?v=XRwoxFspIz8">video</a>
-                /
-                <!-- <a href="https://arxiv.org/abs/2308.10902">arXiv</a> -->
-                <p></p>
-                <p>
-                VR horror immersive experience on scene captured from real campus.
-                </p>
-              </td>
-            </tr>
-            
-
-            <!-- <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle"><img src="images/cvf.jpg"></td>
-              <td width="75%" valign="center">
-                <a href="https://cvpr2023.thecvf.com/Conferences/2023/Organizers">Demo Chair, CVPR 2023</a>
-          <br>
-                <a href="https://cvpr2022.thecvf.com/area-chairs">Area Chair, CVPR 2022</a>
-                <br>
-                <a href="http://cvpr2021.thecvf.com/area-chairs">Area Chair & Longuet-Higgins Award Committee Member, CVPR 2021</a>
-                <br>
-                <a href="http://cvpr2019.thecvf.com/area_chairs">Area Chair, CVPR 2019</a>
-                <br>
-                <a href="http://cvpr2018.thecvf.com/organizers/area_chairs">Area Chair, CVPR 2018</a>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <img src="images/cs188.jpg" alt="cs188">
-              </td>
-              <td width="75%" valign="center">
-                <a href="http://inst.eecs.berkeley.edu/~cs188/sp11/announcements.html">Graduate Student Instructor, CS188 Spring 2011</a>
-                <br>
-                <a href="http://inst.eecs.berkeley.edu/~cs188/fa10/announcements.html">Graduate Student Instructor, CS188 Fall 2010</a>
-                <br>
-                <a href="http://aima.cs.berkeley.edu/">Figures, "Artificial Intelligence: A Modern Approach", 3rd Edition</a>
-              </td>
-            </tr>
-            
-
-            <tr>
-              <td align="center" style="padding:20px;width:25%;vertical-align:middle">
-                <h2>Basically <br> Blog Posts</h2>
-              </td>
-              <td width="75%" valign="middle">
-                <a href="https://arxiv.org/abs/2112.11687">Squareplus: A Softplus-Like Algebraic Rectifier</a>
-                <br>
-                <a href="https://arxiv.org/abs/2010.09714">A Convenient Generalization of Schlick's Bias and Gain Functions</a>
-                <br>
-                <a href="https://arxiv.org/abs/1704.07483">Continuously Differentiable Exponential Linear Units</a>
-                <br>
-                <a href="https://jonbarron.info/data/cvpr2023_llm_workshop_annotated.pdf">Scholars & Big Models: How Can Academics Adapt?</a>
-              </td>
-            </tr> -->
-
-          
-            
-            
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  Design and source code from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron's website</a>.
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-  </body>
+    }
+  </script>
+</body>
 </html>
